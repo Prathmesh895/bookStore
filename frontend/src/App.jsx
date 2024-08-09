@@ -17,6 +17,7 @@ import Resetpass from './pages/resetpassword';
 import PrivateRoute from './PrivateRoute';
 import Verifyemail from './pages/verifyemail';
 import BookDetails from './pages/bookDetails';
+import NotFound from './components/not-found';
 
 function App() {
     return (
@@ -32,7 +33,7 @@ function App() {
                     <Route path='/reset-password/:token' element={<Resetpass />} />
                     <Route path='/verify-email/:token' element={<Verifyemail />} />
                     <Route path='/bookDetails/:id' element={<BookDetails/>} />
-                    
+                    <Route path='*' element={<NotFound/>} />
                     {/* Protected Author Routes */}
                     <Route path='/author' element={
                         <PrivateRoute allowedRole="author">

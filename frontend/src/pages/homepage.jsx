@@ -10,7 +10,7 @@ function homepage() {
   }, []);
 
   const handleOnFetch = async () => {
-    try {
+    try { 
       const res = await fetch('https://book-store-server-ebon.vercel.app/books');
       if (res.ok) {
         console.log("Data fetched");
