@@ -48,7 +48,7 @@ router.post('/signup', async (req, res) => {
             from: process.env.MYEMAIL,
             to: email,
             subject: 'Verify Your Account',
-            text: `Click the following link to verify your account: http://localhost:5173/verify-email/${encodedToken}`
+            text: `Click the following link to verify your account: https://book-store-prathmeshgl.vercel.app/verify-email/${encodedToken}`
         };
 
         // Send the verification email

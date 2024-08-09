@@ -15,7 +15,7 @@ app.use('/files', express.static(path.join(__dirname, 'files')));
 
 app.use(express.json());
 app.use(cors({
-    origin : ["http://localhost:5173"],
+    origin : ["https://book-store-prathmeshgl.vercel.app"],
     credentials:true
 }));
 
