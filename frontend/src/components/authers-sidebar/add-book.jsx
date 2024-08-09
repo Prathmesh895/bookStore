@@ -54,7 +54,7 @@ function AddBook() {
     }
     console.log(title, descp, genre, price, tags, file, addas, publishDate,author);
     try {
-      const res = await fetch("http://localhost:5000/books", {
+      const res = await fetch("https://book-store-server-ebon.vercel.app/books", {
         method: "POST",
         body: formData,
       });

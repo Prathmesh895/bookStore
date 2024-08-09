@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body{
-    background-color: #edf2f4;
+   
 }
 input{
     @apply border py-2 px-3;

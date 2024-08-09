@@ -9,7 +9,7 @@ function VerifyEmail() {
   useEffect(() => {
     const verifyEmail = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/api/verify-email/${token}`, {
+        const response = await fetch(`https://book-store-server-ebon.vercel.app/api/verify-email/${token}`, {
           method: 'GET',
         });
 

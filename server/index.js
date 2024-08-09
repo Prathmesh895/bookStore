@@ -6,10 +6,11 @@ const path = require('path')
 const cors = require('cors');
 const PORT = process.env.PORT || 5000;
 const bookRoute = require('./router/books')
-const signupRoute = require('./router/user');
-const signup = require('./router/signup')
+const loginRoute = require('./router/login');
+const signupRoute = require('./router/signup')
 const forpassRoute =  require('./router/password');
 const cookieParser = require('cookie-parser')
+
 
 app.use('/files', express.static(path.join(__dirname, 'files')));
 
@@ -22,9 +23,9 @@ app.use(cors({
 app.use(cookieParser())
 
 app.use('/books', bookRoute);
-app.use('/api', signupRoute);
+app.use('/api', loginRoute);
 app.use('/passWord', forpassRoute);
-app.use('/api', signup);
+app.use('/api', signupRoute);
 
 app.get(('/'), (req, res) => {
     console.log(req);

@@ -11,7 +11,7 @@ function resetPassword() {
     const handleOnSubmit = async (e) => {
         e.preventDefault();
         try {
-            const res = await fetch(`http://localhost:5000/passWord/reset-password/${token}`, {
+            const res = await fetch(`https://book-store-server-ebon.vercel.app/passWord/reset-password/${token}`, {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json'

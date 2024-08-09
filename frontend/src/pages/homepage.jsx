@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import { FaSearch } from "react-icons/fa";
-
+import { useNavigate } from 'react-router-dom';
 
 function homepage() {
+  const navigate = useNavigate();
   const [bookData, setBookData] = useState([]);
 
   useEffect(() => {
@@ -11,7 +11,7 @@ function homepage() {
 
   const handleOnFetch = async () => {
     try {
-      const res = await fetch('http://localhost:5000/books');
+      const res = await fetch('https://book-store-server-ebon.vercel.app/books');
       if (res.ok) {
         console.log("Data fetched");
         const data = await res.json();
@@ -22,6 +22,10 @@ function homepage() {
       console.error('Error fetching books:', error.message);
     }
   };
+   //redirect to book details page
+   const handleOnRedirect = (id) => {
+    navigate(`/bookDetails/${id}`)
+  }
   return (
     <>
       <section className='w-full'>
@@ -53,7 +57,7 @@ function homepage() {
           {bookData
               .filter(book => book.addas === 'publish')
               .map((book, index) => (
-                <ul key={index} className='border lg:w-56 w-full p-5'>
+                <ul key={index} onClick={()=>handleOnRedirect(book._id)} className='cursor-pointer border lg:w-56 w-full p-5'>
                   <li>
                     <img src={`http://localhost:5000/files/${book.file}`} alt={book.title} className='border lg:w-44 w-full lg:h-56' />
                   </li>

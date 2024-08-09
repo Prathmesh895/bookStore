@@ -41,7 +41,7 @@ function signup() {
     }
 
     try {
-      const res = await fetch("http://localhost:5000/api/signup", {
+      const res = await fetch("https://book-store-server-ebon.vercel.app/api/signup", {
         method: "POST",
         headers: {
           'Content-Type': 'application/json'

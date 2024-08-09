@@ -19,7 +19,7 @@ function ForgotPassword() {
     }
 
     try {
-      const res = await fetch("http://localhost:5000/passWord/forgotpassword", {
+      const res = await fetch("https://book-store-server-ebon.vercel.app/passWord/forgotpassword", {
         method: "POST",
         headers: {
           'Content-Type': 'application/json'

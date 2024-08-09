@@ -94,4 +94,36 @@ router.patch('/:id', upload.single('file'), async (req, res) => {
 });
 
 
+// Add review and rating
+router.post('/:id/reviews', async (req, res) => {
+  try {
+    const book = await Book.findById(req.params.id);
+    if (!book) {
+      return res.status(404).json({ message: 'Book not found' });
+    }
+
+    const { user, comment, rating } = req.body;
+
+    // Ensure the rating is between 1 and 5
+    if (rating < 1 || rating > 5) {
+      return res.status(400).json({ message: 'Rating must be between 1 and 5' });
+    }
+
+    const newReview = {
+      user,
+      comment,
+      rating,
+    };
+
+    book.reviews.push(newReview); // Add the new review to the reviews array
+    await book.save(); // Save the updated book document
+
+    res.status(201).json({ message: 'Review and rating added successfully', reviews: book.reviews });
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).json({ message: error.message });
+  }
+});
+
+
 module.exports = router;
