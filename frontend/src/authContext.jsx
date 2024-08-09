@@ -32,6 +32,7 @@ export const AuthProvider = ({ children }) => {
         localStorage.removeItem('token');
         localStorage.removeItem('userName');
         localStorage.removeItem('email');
+        localStorage.removeItem('role');
         Cookies.remove('token'); // Clear cookie on logout
         setUser(null);
     };
