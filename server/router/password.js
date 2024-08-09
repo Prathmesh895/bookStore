@@ -30,7 +30,7 @@ router.post("/forgotpassword", async (req, res) => {
             from: process.env.MYEMAIL,
             to: email,
             subject: 'Reset Password',
-            text: `Click the following link to reset your password: http://localhost:5173/reset-password/${encodedToken}`
+            text: `Click the following link to reset your password:https://book-store-prathmeshgl.vercel.app/reset-password/${encodedToken}`
         };
 
         transporter.sendMail(mailOptions, (error, info) => {
