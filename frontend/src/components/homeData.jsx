@@ -39,7 +39,7 @@ function Homepage() {
 
   const handleOnFetch = async () => {
     try {
-      const res = await fetch(`http://localhost:5000/books`);
+      const res = await fetch(`https://book-store-server-ebon.vercel.app/books`);
       if (res.ok) {
         const data = await res.json();
         setBookData(data);
@@ -224,7 +224,7 @@ function Homepage() {
               .map((book, index) => (
                 <ul key={index} onClick={()=>handleOnRedirect(book._id)} className='cursor-pointer border lg:w-56 w-full p-5'>
                   <li>
-                    <img src={`http://localhost:5000/files/${book.file}`} alt={book.title} className='border lg:w-44 w-full lg:h-56' />
+                    <img src={`https://book-store-server-ebon.vercel.app/files/${book.file}`} alt={book.title} className='border lg:w-44 w-full lg:h-56' />
                   </li>
                   <li className='font-semibold text-gray-700 text-md truncate '>{book.title}</li>
                   <li className='font-semibold text-gray-400 text-sm '>{book.auther}</li>

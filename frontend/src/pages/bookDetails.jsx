@@ -44,7 +44,7 @@ function BookDetails() {
     }
 
     try {
-      const res = await fetch(`https://book-store-server-ebon.vercel.app/${id}/reviews`, {
+      const res = await fetch(`https://book-store-server-ebon.vercel.app/books/${id}/reviews`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
