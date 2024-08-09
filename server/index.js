@@ -4,7 +4,7 @@ const app = express();
 require('dotenv').config();
 const path = require('path')
 const cors = require('cors');
-const PORT = 5000;
+// const PORT = 5000;
 const bookRoute = require('./router/books')
 const loginRoute = require('./router/login');
 const signupRoute = require('./router/signup')
@@ -35,8 +35,8 @@ app.get(('/'), (req, res) => {
 
 ConnectDB();
 
-app.listen(PORT, () => {
-    console.log(`server is listening at ${PORT}`)
-})
+// app.listen(PORT, () => {
+//     console.log(`server is listening at ${PORT}`)
+// })
 
 module.exports = app;
