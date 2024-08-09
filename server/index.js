@@ -39,4 +39,4 @@ ConnectDB();
 //     console.log(`server is listening at ${PORT}`)
 // })
 
-// module.exports = app;
+module.exports = app;
