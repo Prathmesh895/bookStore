@@ -6,15 +6,25 @@ const path = require('path')
 const cors = require('cors');
 const PORT = process.env.PORT || 5000;
 const bookRoute = require('./router/books')
-const authRoutes = require('./router/auth');
+const signupRoute = require('./router/user');
+const signup = require('./router/signup')
+const forpassRoute =  require('./router/password');
+const cookieParser = require('cookie-parser')
 
 app.use('/files', express.static(path.join(__dirname, 'files')));
 
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+    origin : ["http://localhost:5173"],
+    credentials:true
+}));
+
+app.use(cookieParser())
 
 app.use('/books', bookRoute);
-app.use('/api/auth', authRoutes);
+app.use('/api', signupRoute);
+app.use('/passWord', forpassRoute);
+app.use('/api', signup);
 
 app.get(('/'), (req, res) => {
     console.log(req);

@@ -1,20 +1,23 @@
+const { User } = require('../models/userSchema');
 const jwt = require('jsonwebtoken');
-const TokenBlacklist = require('../models/tokenBlacklisted');
 
-module.exports = async (req, res, next) => {
-  const token = req.headers['authorization']?.split(' ')[1];
-
-  if (!token) return res.status(401).send('Access denied');
-
-  try {
-    // Check if token is blacklisted
-    const blacklistedToken = await TokenBlacklist.findOne({ token });
-    if (blacklistedToken) return res.status(401).send('Token has been invalidated');
-
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    req.user = decoded;
-    next();
-  } catch (error) {
-    res.status(400).send('Invalid token');
-  }
+const verifyUser = async (req, res, next) => {
+    try {
+        const token = req.cookies.token;
+        if (!token) {
+            return res.status(401).json({ message: "No token" });
+        }
+        const decoded = jwt.verify(token, process.env.KEY);
+        const user = await User.findById(decoded.id);
+        if (!user || !user.isVerified) {
+            return res.status(401).json({ message: "Unauthorized, please verify your email" });
+        }
+        req.user = user;
+        next();
+    } catch (error) {
+        console.error("Authorization failed:", error.message);
+        return res.status(500).json({ message: "Authorization failed", error: error.message });
+    }
 };
+
+module.exports = { verifyUser };
