@@ -64,7 +64,7 @@ function UpdateBook({id,onShow}) {
     formData.append('auther', author);
 
     try {
-      const res = await fetch(`http://localhost:5000/books/${id}`, {
+      const res = await fetch(`https://book-store-server-ebon.vercel.app/books/${id}`, {
         method: 'PATCH',
         body: formData,
       });
@@ -170,89 +170,6 @@ function UpdateBook({id,onShow}) {
         )}
       </form>
     </div>
-        {/* <form onSubmit={handleOnSubmit} className='lg:border rounded lg:p-10 lg:mx-5 m-5 absolute top-5 bg-white w-1/3'>
-        <h1 className='text-xl font-semibold text-center mb-5'>Update Book</h1>
-        <div className='mb-4'>
-          <label htmlFor="title" className='block text-sm font-medium text-gray-700'>Enter Book Title</label>
-          <input type="text" id="title" name="title" value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            className='mt-1 block w-full border-gray-300 rounded-md shadow-sm sm:text-sm' />
-        </div>
-        <div className='mb-4'>
-          <label htmlFor="description" className='block text-sm font-medium text-gray-700'>Enter Book Description</label>
-          <input type="text" id="description" name="description" value={descp}
-            onChange={(e) => setDescp(e.target.value)}
-            className='mt-1 block w-full border-gray-300 rounded-md shadow-sm sm:text-sm' />
-        </div>
-        <div className='mb-4'>
-          <label htmlFor="genre" className='block text-sm font-medium text-gray-700'>Enter Book Genre</label>
-          <input type="text" id="genre" name="genre" value={genre}
-            onChange={(e) => setGenre(e.target.value)}
-            className='mt-1 block w-full border-gray-300 rounded-md shadow-sm sm:text-sm' />
-        </div>
-        <div className='mb-4'>
-          <label htmlFor="price" className='block text-sm font-medium text-gray-700'>Enter Book Price</label>
-          <input type="number" id="price" name="price" value={price}
-            onChange={(e) => setPrice(e.target.value)}
-            className='mt-1 block w-full border-gray-300 rounded-md shadow-sm sm:text-sm' />
-        </div>
-        <div className='mb-4'>
-          <label htmlFor="tags" className='block text-sm font-medium text-gray-700'>Add Tags</label>
-          <input type="text" id="tags" name="tags" value={tags}
-            onChange={(e) => setTags(e.target.value)}
-            className='mt-1 block w-full border-gray-300 rounded-md shadow-sm sm:text-sm' />
-        </div>
-        <div className='mb-4'>
-          <label className='block text-sm font-medium text-gray-700' htmlFor="coverImg">Add Cover Photo</label>
-          <input type="file" id="coverImg"
-            onChange={(e) => setFile(e.target.files[0])}
-            className='mt-1 block w-full border-gray-300 rounded-md shadow-sm sm:text-sm'
-            placeholder='Add cover image'
-          />
-        </div>
-        <div className='flex space-x-5 mb-5'>
-          <label htmlFor="">Add as</label>
-          <label htmlFor="radio-option">
-            <input type="radio" name="option" value="publish"
-              checked={addas === 'publish'}
-              onChange={(e) => setAddas(e.target.value)}
-            />
-            Publish
-          </label>
-          <label htmlFor="radio-option">
-            <input type="radio" name="option" value="draft"
-              checked={addas === 'draft'}
-              onChange={(e) => setAddas(e.target.value)}
-            />
-            Draft
-          </label>
-        </div>
-        <div className='mb-4'>
-          <label htmlFor="publishDate" className='block text-sm font-medium text-gray-700'>Publish Date</label>
-          <input type="date" id="publishDate" value={publishDate}
-            onChange={(e) => setPublishedDate(e.target.value)}
-            min={getTodayDate()}
-            className='mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm' />
-        </div>
-        <div className='mb-4'>
-          <label htmlFor="author" className='block text-sm font-medium text-gray-700'>Enter Author Name</label>
-          <input type="text" id="author" name="author" value={author}
-            onChange={(e) => setAuther(e.target.value)}
-            className='mt-1 block w-full border-gray-300 rounded-md shadow-sm sm:text-sm' />
-        </div>
-        <div>
-          <button type="submit" className='px-4 py-2 w-full bg-indigo-600 text-white font-semibold rounded-md shadow-sm hover:bg-indigo-700 '>
-            Update Book
-          </button>
-
-          <div onClick={onShow} className='cursor-pointer text-center px-4 py-2 my-2 w-full bg-indigo-600 text-white font-semibold rounded-md shadow-sm hover:bg-indigo-700 '>
-           Cancel
-          </div>
-        </div>
-        {message && (
-          <div className='text-green-600 bg-green-50 text-center m-5'>{message}</div>
-        )}
-      </form> */}
     </>
   );
 }
