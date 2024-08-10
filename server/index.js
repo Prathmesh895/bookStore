@@ -56,10 +56,10 @@ const cookieParser = require('cookie-parser');
 
 // CORS configuration
 app.use(cors({
-    origin: "https://book-store-prathmeshgl.vercel.app",
+    origin: "http://localhost:5173/",
     credentials: true,
 }));
-app.options('*', cors()); // Handle preflight requests
+app.options('*', cors()); 
 
 // Serve static files
 app.use('/files', express.static(path.join(__dirname, 'files')));
