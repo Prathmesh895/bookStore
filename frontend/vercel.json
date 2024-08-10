@@ -1,7 +1,7 @@
 {
   "routes": [
     {
-      "src": "^/(reset-password|forgot-password)/.*$",
+      "src": "^/(reset-password|forgot-password|verify-email)/.*$",
       "dest": "/index.html"
     },
     {
