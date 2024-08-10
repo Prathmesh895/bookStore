@@ -53,7 +53,7 @@ function homepage() {
         </div>
         <div className='bg-white p-10 mt-36'>
           <h1 className='text-center text-3xl font-serif p-5'>Some trending Books</h1>
-          <div className='grid lg:grid-cols-4 gap-5  mx-44'>
+          <div className='grid lg:grid-cols-4 gap-5  lg:mx-44'>
           {bookData
               .filter(book => book.addas === 'publish')
               .map((book, index) => (
