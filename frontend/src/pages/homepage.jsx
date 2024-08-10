@@ -51,7 +51,8 @@ function homepage() {
             </div>
           </div>
         </div>
-        <div className='bg-white p-10 mt-36'>
+        {/* show books  */}
+        <div className='bg-white ;lg:p-10 lg:mt-36 mt-10'>
           <h1 className='text-center text-3xl font-serif p-5'>Some trending Books</h1>
           <div className='grid lg:grid-cols-4 gap-5  lg:mx-44'>
           {bookData
