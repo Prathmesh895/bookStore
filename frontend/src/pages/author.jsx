@@ -9,12 +9,13 @@ import { AuthContext } from '../authContext';
 
 function Author() {
     const { user } = useContext(AuthContext);
+    const UserName = user?.userName || localStorage.getItem('userName');
     return (
         <>
             <aside className='bg-white  rounded border shadow '>
                 <div className='flex flex-col justify-center items-center border-b p-5 font-mono'>
                     <img src="/pic_profile.svg" alt="profile pic" className='w-20 h-20 ' />
-                    <p >{user.userName}</p>
+                    <p >{UserName}</p>
                 </div>
                 <div className='mt-5 font-semibold p-5'>
                     <ul>
