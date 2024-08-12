@@ -8,8 +8,8 @@ import { AuthContext } from '../authContext';
 function Navbar() {
     const { user, logout } = useContext(AuthContext);
     const [showNav, setShowNav] = useState(false);
-    // show nav for mobile view
 
+    // show nav for mobile view
     const handleOnShowNav = () => {
         setShowNav(!showNav);
     }

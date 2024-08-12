@@ -8,8 +8,8 @@ function LoginPage() {
     const [message, setMessage] = useState('');
     const [error, setError] = useState({
         email: '',
-        password: '', 
-        general: '', 
+        password: '',
+        general: '',
         isVerified: ''
     });
 
@@ -21,8 +21,10 @@ function LoginPage() {
             const role = localStorage.getItem('role');
             if (role === 'author') {
                 navigate('/author');
+                window.location.reload();
             } else {
                 navigate('/');
+                window.location.reload();
             }
         }
     }, [navigate]);
@@ -79,10 +81,10 @@ function LoginPage() {
                     <img src="/login_pdn4.svg" alt="login-logo" />
                 </div>
                 {/* Login form */}
-                <form onSubmit={handleOnSubmit} className='bg-white lg:basis-1/2 lg:py-28 flex flex-col space-y-9 justify-center items-center lg:px-10 p-5'>
+                <form onSubmit={handleOnSubmit} className='bg-white lg:basis-1/2 lg:py-28 flex flex-col  lg:justify-center lg:items-center lg:px-10 p-5'>
                     <div className='text-3xl font-semibold text-start lg:w-[70%] w-[100%]'>Welcome Back!</div>
                     {/* Input for email */}
-                    <div className='flex flex-col lg:w-[70%] w-[100%]'>
+                    <div className='flex flex-col lg:w-[70%] w-[100%] my-5'>
                         <label htmlFor="email">Enter Email</label>
                         <input type="email" id="email"
                             className={`${error.email ? "border-red-500" : ''}`}
@@ -93,7 +95,7 @@ function LoginPage() {
                     </div>
 
                     {/* Input for password */}
-                    <div className='flex flex-col lg:w-[70%] w-[100%]'>
+                    <div className='flex flex-col lg:w-[70%] w-[100%] my-5'>
                         <label htmlFor="password">Enter Password</label>
                         <input type="password" id="password"
                             className={`${error.password ? "border-red-500" : ''}`}
@@ -106,6 +108,9 @@ function LoginPage() {
                         </div>
                     </div>
                     <button type="submit" className='bg-blue-700 text-white px-10 lg:w-[70%] w-[100%]'>Login</button>
+                    <div className='my-5 text-start'>Don't have an account?
+                        <Link to='/signup' className='text-blue-500 mx-1 cursor-pointer'>Sign up</Link>
+                    </div>
                     <div>
                         {message &&
                             <div className={`${message === 'User Is not Verified' ? 'text-red-500' : 'text-green-700'} text-md bg-white font-semibold absolute top-24 right-10 rounded w-56 h-16 border shadow flex items-center justify-center space-x-2`}>

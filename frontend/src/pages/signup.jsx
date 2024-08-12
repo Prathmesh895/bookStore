@@ -1,5 +1,6 @@
-import React, { useState,useEffect  } from 'react'
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react'
+import { Link, useNavigate } from 'react-router-dom';
+
 
 function signup() {
   const navigate = useNavigate();
@@ -16,15 +17,15 @@ function signup() {
     // Check if user is already logged in
     const token = localStorage.getItem('token');
     if (token) {
-        // Redirect based on user role
-        const role = localStorage.getItem('role');
-        if (role === 'author') {
-            navigate('/author');
-        } else {
-            navigate('/');
-        }
+      // Redirect based on user role
+      const role = localStorage.getItem('role');
+      if (role === 'author') {
+        navigate('/author');
+      } else {
+        navigate('/');
+      }
     }
-}, [navigate]);
+  }, [navigate]);
 
   const handleOnSubmit = async (e) => {
     e.preventDefault();
@@ -128,6 +129,9 @@ function signup() {
               <span className='text-sm text-red-600 '>{errors.role}</span>
             </div>
             <button type="submit" className='bg-blue-700 text-white px-10 py-1.5 lg:w-[70%] w-[100%]'>Login</button>
+            <div className='my-5 text-start'>Already have an account?
+              <Link to='/login' className='text-blue-500 mx-1 cursor-pointer'>Login</Link>
+            </div>
             <div>
               {errors && <h1 className='text-sm text-red-600 bg-red-50 p-1 '>{errors.general}</h1>}
             </div>
