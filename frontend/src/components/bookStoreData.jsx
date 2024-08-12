@@ -126,9 +126,9 @@ function Homepage() {
 
   return (
     <section className='bg-white'>
-      <main className='flex space-x-10 mx-20 my-10'>
+      <main className='flex  lg:flex-row flex-col-reverse lg:space-x-10 lg:mx-20 my-10'>
         {/* section 1 */}
-        <aside className='w-[20%]'>
+        <aside className='lg:w-[20%]'>
           {/* filter books by genre */}
           <div className='bg-white border rounded-xl'>
             <h1 className='font-semibold border-b py-4 pl-14 text-xl'>Genre</h1>
@@ -178,21 +178,21 @@ function Homepage() {
         {/* section 2 */}
         <section>
           {/* nav menu */}
-          <div className='flex items-center space-x-14 border-b pb-3 w-full'>
-            <div className='font-semibold font-serif text-xl'>
+          <div className='flex  lg:flex-row flex-col lg:items-center space-y-4 lg:space-x-14 border-b pb-3 w-full'>
+            <div className='font-semibold font-serif text-xl mx-5 lg:mx-0'>
               Books
             </div>
             <div>
               <input
                 type="search"
                 placeholder='Search book'
-                className='text-sm font-semibold w-72'
+                className='text-sm font-semibold mx-5 lg:mx-0 lg:w-72 w-80'
                 value={searchBook}
                 onChange={handleInputChange(setSearchBook)}
               />
             </div>
             {/* sort by Price */}
-            <div className='border px-4 py-1 rounded cursor-pointer'>
+            <div className='border px-4 py-1 rounded cursor-pointer mx-5 lg:mx-0'>
               <select name="" id="" value={price} onChange={(e) => handleSelectChange(setPrice, e.target.value)}>
                 <option value="">Price</option>
                 <option value="high-to-low">High to Low</option>
@@ -200,7 +200,7 @@ function Homepage() {
               </select>
             </div>
             {/* sort by date */}
-            <div className='border px-4 py-1 rounded cursor-pointer'>
+            <div className='border px-4 py-1 rounded cursor-pointer mx-5 lg:mx-0'>
               <select name="" id="" value={date} onChange={(e) => handleSelectChange(setDate, e.target.value)}>
                 <option value="">Publish date</option>
                 <option value="new-to-old">New to Old</option>
@@ -208,7 +208,7 @@ function Homepage() {
               </select>
             </div>
             {/* show book per page */}
-            <div className='border px-4 py-1 rounded cursor-pointer'>
+            <div className='border px-4 py-1 rounded cursor-pointer mx-5 lg:mx-0'>
               Show
               <select name="" id="" value={booksPerPage} onChange={handleBooksPerPageChange}>
                 <option value="10">10</option>

@@ -21,11 +21,12 @@ export const AuthProvider = ({ children }) => {
         localStorage.setItem('token', userData.token);
         localStorage.setItem('userName', userData.userName);
         localStorage.setItem('email', userData.email);
-        Cookies.set('token', userData.token); // Set cookie on login
+        Cookies.set('token', userData.token);
         setUser({
             userName: userData.userName,
             email: userData.email
         });
+        window.location.reload();
     };
 
     const logout = () => {
@@ -33,8 +34,9 @@ export const AuthProvider = ({ children }) => {
         localStorage.removeItem('userName');
         localStorage.removeItem('email');
         localStorage.removeItem('role');
-        Cookies.remove('token'); // Clear cookie on logout
+        Cookies.remove('token');
         setUser(null);
+        window.location.reload();
     };
 
     return (

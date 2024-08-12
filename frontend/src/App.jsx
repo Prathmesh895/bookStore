@@ -11,7 +11,7 @@ import AddBook from './components/authers-sidebar/add-book';
 import Publishedbooks from './components/authers-sidebar/publishedbooks';
 import DraftBook from './components/authers-sidebar/draft-book';
 import Updatebook from './components/authers-sidebar/updatebook';
-import BookData from './components/homeData';
+import BookData from './components/bookStoreData';
 import Forgotpassword from './pages/forgotpassword';
 import Resetpass from './pages/resetpassword';
 import PrivateRoute from './PrivateRoute';
