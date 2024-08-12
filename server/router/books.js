@@ -38,6 +38,7 @@ router.post('/', upload.single('file'), async (req, res) => {
     res.status(201).json({ message: 'File uploaded and book created successfully' });
   } catch (error) {
     console.error(error.message);
+    console.error('Error details:', error);
     res.status(500).json({ message: error.message });
   }
 });
