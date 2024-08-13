@@ -132,7 +132,7 @@ router.patch('/:id', async (req, res) => {
     book.auther = auther || book.auther;
 
     if (req.files.file) {
-      book.coverImg = imageUrl; // Update cover image if a new file is uploaded
+      book.file = imageUrl; // Update cover image if a new file is uploaded
     }
 
     await book.save();
