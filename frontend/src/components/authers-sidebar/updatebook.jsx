@@ -86,7 +86,7 @@ function UpdateBook({id,onShow}) {
   return (
     <>
     <div className=' absolute top-28 z-10 lg:w-[80%] w-full bg-slate-200 flex justify-center'> 
-      <form onSubmit={handleOnSubmit} className='lg:border rounded lg:p-10 lg:mx-5 m-5 lg:w-1/2 w-full bg-white '>
+      <form onSubmit={handleOnSubmit} className='lg:border rounded lg:p-10 p-5 lg:mx-5 lg:m-5 lg:w-1/2 w-full bg-white '>
         <h1 className='text-xl font-semibold text-center mb-5'>Update Book</h1>
         <div className='mb-4'>
           <label htmlFor="title" className='block text-sm font-medium text-gray-700'>Enter Book Title</label>
