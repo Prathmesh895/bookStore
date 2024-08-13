@@ -5,7 +5,8 @@ const cloudinary = require('cloudinary').v2;
 const fileUpload = require('express-fileupload');
 
 
-console.log(cloudinary.config());
+// console.log(cloudinary.config());
+
 // Middleware to handle file uploads
 router.use(fileUpload({
   useTempFiles: true,
@@ -34,7 +35,7 @@ router.post('/', async (req, res) => {
 
       try {
         const result = await cloudinary.uploader.upload(imagePath, options);
-        console.log(result);
+        // console.log(result);
         return result.secure_url;  // Return the URL of the uploaded image
       } catch (error) {
         console.error('Error uploading to Cloudinary:', error);
@@ -110,7 +111,7 @@ router.patch('/:id', async (req, res) => {
 
       try {
         const result = await cloudinary.uploader.upload(imagePath, options);
-        console.log(result);
+        // console.log(result);
         return result.secure_url;  // Return the URL of the uploaded image
       } catch (error) {
         console.error('Error uploading to Cloudinary:', error);
