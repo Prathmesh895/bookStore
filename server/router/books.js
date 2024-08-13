@@ -121,6 +121,7 @@ router.patch('/:id', async (req, res) => {
     // Upload the image file to Cloudinary
     const imageFile = req.files.file;
     const imageUrl = await uploadImage(imageFile.tempFilePath);
+
     const { title, descp, genre, price, tags, addas, publishDate, auther } = req.body;
     book.title = title || book.title;
     book.descp = descp || book.descp;
@@ -130,10 +131,7 @@ router.patch('/:id', async (req, res) => {
     book.addas = addas || book.addas;
     book.publishDate = publishDate || book.publishDate;
     book.auther = auther || book.auther;
-
-    if (req.files.file) {
-      book.file = imageUrl; // Update cover image if a new file is uploaded
-    }
+    book.file = imageUrl || book.file;
 
     await book.save();
     res.status(200).send(book);
