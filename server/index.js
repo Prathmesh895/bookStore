@@ -2,7 +2,7 @@ const express = require('express');
 const { ConnectDB } = require('./lib/conectDB');
 const app = express();
 require('dotenv').config();
-const path = require('path');
+// const path = require('path');
 const cors = require('cors');
 // const PORT = 5000;
 const bookRoute = require('./router/books');
@@ -19,7 +19,7 @@ app.use(cors({
 app.options('*', cors()); // Handle preflight requests
 
 // Serve static files
-app.use('/files', express.static(path.join(__dirname, 'files')));
+// app.use('/files', express.static(path.join(__dirname, 'files')));
 
 // Disable caching
 app.use((req, res, next) => {
