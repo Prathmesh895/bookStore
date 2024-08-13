@@ -75,7 +75,7 @@ function BookDetails() {
       <img src="/newletter_bg.jpg" alt="" className="w-full absolute -z-10" />
       <div className="flex justify-between pt-20 min-h-96 mx-20">
         <div className="bg-white basis-1/2 m-5 p-8 border rounded-xl">
-          <img src={`https://book-store-server-ebon.vercel.app/files/${bookData.file}`} alt={bookData.title} className="w-full" />
+          <img src={bookData.file} alt={bookData.title} className="w-full" />
         </div>
         <div className="bg-white basis-1/2 m-5 p-6 border rounded-xl">
           <h1 className="text-4xl font-semibold">{bookData.title || "The Story of Success"}</h1>
