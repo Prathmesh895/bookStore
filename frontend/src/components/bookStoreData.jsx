@@ -71,7 +71,7 @@ function Homepage() {
       filteredBooks = filteredBooks.filter(book => book.auther === auther);
     }
     if (ratings) {
-      filteredBooks = filteredBooks.filter(book => book.ratings >= ratings);
+      filteredBooks = filteredBooks.filter(book => book.reviews.rating >= ratings);
     }
     if (searchBook) {
       filteredBooks = filteredBooks.filter(book => book.title.toLowerCase().includes(searchBook.toLowerCase()));
