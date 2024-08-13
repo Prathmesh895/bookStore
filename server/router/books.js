@@ -94,7 +94,53 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// update book details
+// // update book details
+// router.patch('/:id', async (req, res) => {
+//   try {
+//     const book = await Book.findById(req.params.id);
+//     if (!book) {
+//       return res.status(404).send({ error: 'Book not found' });
+//     }
+
+//     const uploadImage = async (imagePath) => {
+//       const options = {
+//         use_filename: true,
+//         unique_filename: false,
+//         overwrite: true,
+//       };
+
+//       try {
+//         const result = await cloudinary.uploader.upload(imagePath, options);
+//         // console.log(result);
+//         return result.secure_url;  // Return the URL of the uploaded image
+//       } catch (error) {
+//         console.error('Error uploading to Cloudinary:', error);
+//         throw error;
+//       }
+//     };
+//     // Upload the image file to Cloudinary
+//     const imageFile = req.files.file;
+//     const imageUrl = await uploadImage(imageFile.tempFilePath);
+
+//     const { title, descp, genre, price, tags, addas, publishDate, auther } = req.body;
+//     book.title = title || book.title;
+//     book.descp = descp || book.descp;
+//     book.genre = genre || book.genre;
+//     book.price = price || book.price;
+//     book.tags = tags || book.tags;
+//     book.addas = addas || book.addas;
+//     book.publishDate = publishDate || book.publishDate;
+//     book.auther = auther || book.auther;
+//     book.file = imageUrl || book.file;
+
+//     await book.save();
+//     res.status(200).send(book);
+//   } catch (error) {
+//     res.status(500).send({ error: 'Failed to update book' });
+//   }
+// });
+
+// Update book details
 router.patch('/:id', async (req, res) => {
   try {
     const book = await Book.findById(req.params.id);
@@ -102,26 +148,33 @@ router.patch('/:id', async (req, res) => {
       return res.status(404).send({ error: 'Book not found' });
     }
 
-    const uploadImage = async (imagePath) => {
-      const options = {
-        use_filename: true,
-        unique_filename: false,
-        overwrite: true,
+    let imageUrl = book.file; // Default to the existing image URL
+
+    // Check if a new file is uploaded
+    if (req.files && req.files.file) {
+      const imageFile = req.files.file;
+      
+      // Upload the image file to Cloudinary
+      const uploadImage = async (imagePath) => {
+        const options = {
+          use_filename: true,
+          unique_filename: false,
+          overwrite: true,
+        };
+
+        try {
+          const result = await cloudinary.uploader.upload(imagePath, options);
+          return result.secure_url;  // Return the URL of the uploaded image
+        } catch (error) {
+          console.error('Error uploading to Cloudinary:', error);
+          throw error;
+        }
       };
 
-      try {
-        const result = await cloudinary.uploader.upload(imagePath, options);
-        // console.log(result);
-        return result.secure_url;  // Return the URL of the uploaded image
-      } catch (error) {
-        console.error('Error uploading to Cloudinary:', error);
-        throw error;
-      }
-    };
-    // Upload the image file to Cloudinary
-    const imageFile = req.files.file;
-    const imageUrl = await uploadImage(imageFile.tempFilePath);
+      imageUrl = await uploadImage(imageFile.tempFilePath);
+    }
 
+    // Update book fields
     const { title, descp, genre, price, tags, addas, publishDate, auther } = req.body;
     book.title = title || book.title;
     book.descp = descp || book.descp;
@@ -131,15 +184,15 @@ router.patch('/:id', async (req, res) => {
     book.addas = addas || book.addas;
     book.publishDate = publishDate || book.publishDate;
     book.auther = auther || book.auther;
-    book.file = imageUrl || book.file;
+    book.file = imageUrl; // Set to new image URL or existing one if no new file was uploaded
 
     await book.save();
     res.status(200).send(book);
   } catch (error) {
+    console.error('Error updating book:', error.message);
     res.status(500).send({ error: 'Failed to update book' });
   }
 });
-
 
 // Add review and rating
 router.post('/:id/reviews', async (req, res) => {
