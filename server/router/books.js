@@ -225,33 +225,33 @@ router.get('/:id', async (req, res) => {
 });
 
 
-router.patch('/:id', upload.single('file'), async (req, res) => {
-  try {
-    const book = await Book.findById(req.params.id);
-    if (!book) {
-      return res.status(404).send({ error: 'Book not found' });
-    }
+// router.patch('/:id', upload.single('file'), async (req, res) => {
+//   try {
+//     const book = await Book.findById(req.params.id);
+//     if (!book) {
+//       return res.status(404).send({ error: 'Book not found' });
+//     }
 
-    const { title, descp, genre, price, tags, addas, publishDate, auther } = req.body;
-    book.title = title || book.title;
-    book.descp = descp || book.descp;
-    book.genre = genre || book.genre;
-    book.price = price || book.price;
-    book.tags = tags || book.tags;
-    book.addas = addas || book.addas;
-    book.publishDate = publishDate || book.publishDate;
-    book.auther = auther || book.auther;
+//     const { title, descp, genre, price, tags, addas, publishDate, auther } = req.body;
+//     book.title = title || book.title;
+//     book.descp = descp || book.descp;
+//     book.genre = genre || book.genre;
+//     book.price = price || book.price;
+//     book.tags = tags || book.tags;
+//     book.addas = addas || book.addas;
+//     book.publishDate = publishDate || book.publishDate;
+//     book.auther = auther || book.auther;
 
-    if (req.file) {
-      book.coverImg = req.file.path; // Update cover image if a new file is uploaded
-    }
+//     if (req.file) {
+//       book.coverImg = req.file.path; // Update cover image if a new file is uploaded
+//     }
 
-    await book.save();
-    res.status(200).send(book);
-  } catch (error) {
-    res.status(500).send({ error: 'Failed to update book' });
-  }
-});
+//     await book.save();
+//     res.status(200).send(book);
+//   } catch (error) {
+//     res.status(500).send({ error: 'Failed to update book' });
+//   }
+// });
 
 
 // Add review and rating
