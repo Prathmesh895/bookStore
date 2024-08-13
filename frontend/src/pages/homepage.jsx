@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
+import BookData from '../components/bookStoreData'
 
 function homepage() {
   const navigate = useNavigate();
@@ -52,7 +53,7 @@ function homepage() {
           </div>
         </div>
         {/* show books  */}
-        <div className='bg-white ;lg:p-10 lg:mt-36 mt-10'>
+        <div className='bg-white ;lg:p-10 lg:mt-36 mt-10 mb-10'>
           <h1 className='text-center text-3xl font-serif p-5'>Some trending Books</h1>
           <div className='grid lg:grid-cols-4 gap-5  lg:mx-44'>
           {bookData
@@ -69,7 +70,9 @@ function homepage() {
               ))}
           </div>
         </div>
+        <BookData/>
       </section>
+    
     </>
   )
 }
