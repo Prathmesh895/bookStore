@@ -20,7 +20,7 @@ function UpdateBook({id,onShow}) {
   useEffect(() => {
     const fetchBook = async () => {
       try {
-        const res = await fetch(`http://localhost:5000/books/${id}`);
+        const res = await fetch(`https://book-store-server-ebon.vercel.app/books/${id}`);
         if (res.ok) {
           const data = await res.json();
           setTitle(data.title || '');
@@ -85,8 +85,8 @@ function UpdateBook({id,onShow}) {
 
   return (
     <>
-    <div className=' absolute top-28 z-10 w-[80%] bg-slate-200 flex justify-center'> 
-      <form onSubmit={handleOnSubmit} className='lg:border rounded lg:p-10 lg:mx-5 m-5 w-1/2 bg-white '>
+    <div className=' absolute top-28 z-10 lg:w-[80%] w-full bg-slate-200 flex justify-center'> 
+      <form onSubmit={handleOnSubmit} className='lg:border rounded lg:p-10 lg:mx-5 m-5 lg:w-1/2 w-full bg-white '>
         <h1 className='text-xl font-semibold text-center mb-5'>Update Book</h1>
         <div className='mb-4'>
           <label htmlFor="title" className='block text-sm font-medium text-gray-700'>Enter Book Title</label>
